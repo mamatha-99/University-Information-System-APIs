@@ -1,0 +1,161 @@
+
+API Documentation: Return Schema
+
+--------------------------------------------------------------------------------
+Specifications:
+---------------------
+Code:
+
+Type: Integer
+Allowed Values: 0 (for error), 1 (for success)
+Description: Indicates whether the API call was successful. 1 means success, and 0 means there was an error.
+---------------------
+Msg:
+
+Type: String
+Allowed Values: "Success" (if code is 1), "Error" (if code is 0)
+Description: Provides a message describing the outcome of the API request.
+---------------------
+Data:
+
+Type: Object
+Contains:
+
+Total:
+Type: Integer
+Description: The total number of records returned by the API call.
+
+Records:
+Type: Array
+Description: An array of objects, each representing a record related to the query.
+---------------------
+
+--------------------------------------------------------------------------------
+Examples:
+---------------------
+1. Departments API
+
+{
+  "code": 1,
+  "data": {
+    "records": [
+      {
+        "budget": 1000525,
+        "building": "Pembroke",
+        "dept_name": "AppMath",
+        "instructors": [
+          {
+            "id": "113",
+            "name": "Sunil Agarwal",
+            "salary": 99000
+          }
+        ]
+      },
+      {
+        "budget": 4000000,
+        "building": "CIT",
+        "dept_name": "CompSci",
+        "instructors": [
+          {
+            "id": "112",
+            "name": "Ying Zheng",
+            "salary": 220000
+          },
+          {
+            "id": "118",
+            "name": "Calista Holistic",
+            "salary": 123000
+          }
+        ]
+      }
+    ],
+    "total": 2
+  },
+  "msg": "Success"
+}
+---------------------
+
+2. Students API
+
+{
+    "code": 1,
+    "data": {
+        "records": [
+            {
+                "courses": [
+                    {
+                        "course_id": "CSCI1270",
+                        "section_id": 2,
+                        "semester": "Fall",
+                        "year": 2023
+                    },
+                    {
+                        "course_id": "Data1050",
+                        "section_id": 1,
+                        "semester": "Fall",
+                        "year": 2023
+                    }
+                ],
+                "dept_name": "AppMath",
+                "id": "1122",
+                "name": "Julia Rodriguez"
+            },
+            {
+                "courses": [],
+                "dept_name": "Psychology",
+                "id": "1221",
+                "name": "Ivan Petrov"
+            }
+        ],
+        "total": 2
+    },
+    "msg": "Success"
+}
+---------------------
+
+3. Courses API
+
+{
+    "code": 1,
+    "data": {
+        "records": [
+            {
+                "course_id": "APMA1650",
+                "dept_name": "AppMath",
+                "instructors": [
+                    {
+                        "instructor_id": "113",
+                        "name": "Sunil Agarwal",
+                        "section": 1,
+                        "semester": "Spring",
+                        "year": 2023
+                    }
+                ],
+                "title": "Statistical Inference 1"
+            },
+            {
+                "course_id": "CSCI1270",
+                "dept_name": "CompSci",
+                "instructors": [
+                    {
+                        "instructor_id": "112",
+                        "name": "Ying Zheng",
+                        "section": 1,
+                        "semester": "Fall",
+                        "year": 2023
+                    },
+                    {
+                        "instructor_id": "118",
+                        "name": "Calista Holistic",
+                        "section": 2,
+                        "semester": "Fall",
+                        "year": 2023
+                    }
+                ],
+                "title": "Database Management Systems"
+            }
+        ],
+        "total": 2
+    },
+    "msg": "Success"
+}
